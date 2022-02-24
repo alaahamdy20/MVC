@@ -1,0 +1,42 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Instractor
+
+
+<div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+    <div class="card p-4 col-6">
+        <div class="  d-flex flex-column justify-content-center align-items-center"> 
+            <img style="height:200px ;width:200px" class=" img-fluid rounded-circle" src="~/images/@Model.Image"  />
+            <span class="name mt-3 h1">@Model.Name</span> 
+
+               
+      
+                    <div class="w-100 border-bottom">
+                        <div class="row ">
+                        <p class="col-6 lead font-weight-bold ">Name</p>
+                        <p class="col-6">@Model.Name</p>
+                        </div>
+                    </div>
+                    <div class="w-100 border-bottom">
+                        <div class="row ">
+                        <p class="col-6 lead font-weight-bold">Address</p>
+                        <p class="col-6">@Model.Address</p>
+                        </div>
+                    </div>
+                    <div class="w-100 border-bottom">
+                        <div class="row ">
+                        <p class="col-6 lead font-weight-bold">CourseName</p>
+                        <p class="col-6">@Model.CIdNavigation.Name</p>
+                        </div>
+                    </div>
+                   
+                    
+      
+
+            <a class="btn mt-3 btn-outline-dark" href="/Instructor/index" >Back</a>
+        </div>
+    </div>
+</div>

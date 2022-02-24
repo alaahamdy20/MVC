@@ -1,0 +1,46 @@
+﻿@model List<Instractor>
+<div class="container-xxl py-5">
+	<div class="col-md-4 ms-auto mb-3">
+			<label class="small mb-1" for="inputBirthday">courses</label>
+			<select asp-items="ViewBag.depts" id="droplist" onchange="GetData()"  class="form-select">
+			</select>
+		</div>
+	<div class="container">
+		
+		<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+			<h6 class="section-title bg-white text-center text-primary px-3">Instructors</h6>
+			<h1 id="txt" class="mb-5">@ViewBag.deptName</h1>
+		</div>
+		<div id="con" class="row g-4">
+			
+				<partial name="_DisplayAllStudent" model="Model" />
+		</div>
+
+		<div class="text-end my-5 ">
+			<a class="btn btn-outline-dark mb-4" href="/Instructor/Create/">Create</a>
+
+		</div>
+	</div>
+</div>
+<script>
+	function GetData(){
+	$('#txt').html($("#droplist option:selected").text())
+
+	$.ajax({
+                    type: "POST",
+                    url: "/Department/AjaxMethod",
+                    data: { "deptid": $("#droplist").val() },
+                    success: function (response) {
+						$('#con').html(response)
+						alert(viewbagitem)
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                   }
+                });
+
+	}
+</script>

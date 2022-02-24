@@ -1,0 +1,91 @@
+﻿@model Instractor
+
+@{
+	SelectList selectListsCourses = new SelectList(ViewBag.courses,"Id","Name");
+	SelectList selectListsDepts = new SelectList(ViewBag.depts,"Id","Name");
+	//SelectList selectListsDepts   = new SelectList(ViewBag.depts,"DId","DName");
+	//SelectList selectListsDepts = new SelectList(ViewBag.depts,"DId","DName");
+}
+<form asp-action="SaveEdit" asp-route-Id="@Model.Id" method="post" enctype="multipart/form-data">
+	<div class="container-xl px-4 mt-4">
+		<!-- Account page navigation-->
+		<div class="row">
+			<div class="col-12">
+				<h2 class="">Edit Instractor</h2>
+			</div>
+		</div>
+		<hr class="mt-0 mb-4">
+		<div class="row">
+			<div class="col-xl-4">
+				<!-- Profile picture card-->
+				<div class="card mb-4 mb-xl-0">
+					<div class="card-header">Profile Picture</div>
+					<div class="card-body text-center">
+						<!-- Profile picture image-->
+						<img style="width : 250px;height : 250px ;object-fit: cover; " id="output" class="img-account-profile rounded-circle mb-2" src="~/images/@Model.Image" alt="">
+						<!-- Profile picture help block-->
+						<div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+						<!-- Profile picture upload button-->
+						<label asp-for="ProfileImage" class="control-label"></label>
+						<div class="custom-file">
+							<input asp-for="ProfileImage" accept="image/*" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])" class="custom-file-input" id="customFile">
+							<label class="custom-file-label" for="customFile">Choose file</label>
+						</div>
+						<span asp-validation-for="ProfileImage" class="text-danger"></span>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-8">
+				<!-- Account details card-->
+				<div class="card mb-4">
+					<div class="card-header">Account Details</div>
+					<div class="card-body">
+						<!-- Form Group (username)-->
+						<div class="mb-3">
+							<label asp-for="Name" class="small mb-1">Username (how your name will appear to other users on the site)</label>
+							<input asp-for="Name" class="form-control" placeholder="Enter your username">
+						</div>
+
+						<!-- Form Row-->
+						<div class="row gx-3 mb-3">
+							<!-- Form Group (phone number)-->
+							<div class="col-md-6">
+								<label class="small mb-1" for="inputPhone">Depaertment</label>
+								<select asp-for="DId" asp-items="selectListsDepts" class="form-control" >
+									
+								</select>
+
+							</div>
+
+							<!-- Form Group (birthday)-->
+							<div class="col-md-6">
+								<label class="small mb-1" for="inputBirthday">courses</label>
+								<select asp-for="CId" asp-items="selectListsCourses" class="form-control" >
+								</select>
+							</div>
+						</div>
+						<!-- Form Group (Salary)-->
+						<div class="mb-3">
+							<label asp-for="Salary" class="small mb-1"></label>
+							<input asp-for="Salary" class="form-control" placeholder="Enter your email Salary">
+						</div>
+						<!-- Form Group (Address)-->
+						<div class="mb-3">
+							<label asp-for="Address" class="small mb-1">Address</label>
+							<input asp-for="Address" class="form-control" placeholder="Enter your  address">
+						</div>
+
+
+						<div class="text-right mb-3 mt-3">
+
+							<!-- Cancel button-->
+							<a asp-action="Index" class="btn btn-primary">Cancel</a>
+							<!-- changes button-->
+							<button class="btn btn-primary" type="submit">Save changes</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

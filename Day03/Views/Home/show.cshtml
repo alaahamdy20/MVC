@@ -1,0 +1,32 @@
+﻿
+@model StudentResultViewModel
+
+<table class="table table-bordered table-hover col-6 m-auto text-monospace">
+    <div class="py-3">
+          <h1 class="text-center"><span class="border-bottom pb-2   border-dark">Student Deatils <span class="spinner-border"></span></span></h1>
+      </div>
+  <tbody>
+      
+        <tr>
+            <th scope="col">Name</th>
+            <td>@Model.Name</td>
+        </tr>
+        <tr>
+            <th scope="col">CourseName</th>
+         <td>@Model.cName</td>
+        </tr>
+        <tr>
+            <th>Degree</th>
+            <td>@Model.Degree</td>
+        </tr>
+        <tr class="details @(@Model.Stauts == "Fail" ? "bg-danger" : "bg-success")">
+            <th>Stauts</th>
+            <td>@Model.Stauts</td>
+        </tr>
+      
+
+  </tbody>
+</table>
+<div class="text-right px-5 ">
+@Html.ActionLink("Back","index","home",null,new {@class = "btn btn-danger m-5  " });
+</div>
